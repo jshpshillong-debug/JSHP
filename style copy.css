@@ -4,15 +4,9 @@
     box-sizing:border-box;
     font-family:'Poppins',sans-serif}
 body{
-    background:gray;
+    background:rgb(255, 255, 255);
     color:#eaeaea;
-    line-height:1.6;
-        background: #f4f1ea;
-        margin: 0;
-        max-width: 100%;
-      
-        
-      }
+    line-height:1.6}
 
 
 .navbar{

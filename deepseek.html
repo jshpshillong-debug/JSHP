@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSHP SHILLONG</title>
+    <link rel="stylesheet" href="deepseek.css" />
+    <link rel="icon" href="img/emlem.png" alt="icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="container">
+        <div>
+          <img
+            src="img/JSHP Emblem.png"
+            class="logo"
+            alt="JSHP Shillong Logo"
+          />
+        </div>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="#home" class="active">🏠 Home</a>
+          <a href="#about">📖 About JSHP</a>
+          <a href="#Notifications">📅 Notifications</a>
+          <a href="#videos">🎬 Videos</a>
+          <a href="index.php">📷 Gallery</a>
+          <a href="#contact">☎️ Contact</a>
+        </nav>
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Toggle navigation"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section id="home">
+        <div class="text-box">
+          <h1>JINGIASENG SAMLA HYNÑIEW PRESBYTERY SHILLONG</h1>
+          <h2>
+            Nongstoin, Rambrai, Ri-Lyngngam, Nongkhlaw, Nongpyndeng, Tynghor &
+            Umsaw
+          </h2>
+          <p>Motto: "To beh sha pyrshah ka thong"</p>
+          <img
+            src="img/emlem.png"
+            class="emblem"
+            alt="Emblem of JSHP Shillong"
+          />
+          <h3>PRESBYTERIAN CHURCH OF INDIA</h3>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="reader">
+          <h1>Shaphang Ka Jingiaseng Samla Hynniew Presbytery</h1>
+          <div class="about">
+            <p>
+              Ka Jingïaseng Samla Hynñiew presbytery ka kynthup ïa ki Samla, ki
+              hep barit bad ki long kmie ki longkpa kiba na kitei ki Hynñiew
+              Presbytery kiba shong ba sah hangne ha sor shillong. Ha shuwa jong
+              u snem 1993, ka ju long ka rukom ba ki Samla kiba dei na ki thain
+              kiba hap hapoh ki Hynñiew tylli ki Presbytery kiba mynta, kiba don
+              ka mynsiem ban sngew nongwei ban leit sha ki Jingïaseng ha ki
+              Balang hangne ha sor Shillong ha ki sngi U Blei. Kumta, ka pynlong
+              ïa ki ban byrngia ha ki wei kwei ki kam ha ki janmiet Sngi U Trai,
+              kum ka jingleit shangkai sha ki jaka iew bad kiwei kiwei ki jaka
+              kiba ialam ïa ki sha shibun ki jing pynnshoi, bad ba kin jngai na
+              U Blei. Kumta, da ka jingiohi jngai jong ki katto katne ki rangbah
+              bad ki Samla, ki la seng ïa kane ka jiniaseng Samla, ka pynia
+              kynduh lang iaki Samla na ki thain hapoh ki Hynñiew tylli ki
+              presbytery kiba mynta ba kin ioh ban iatei ha ka jinlong ba kynja
+              mynsiem bad ioh ruh shibun ki jinghikai na ka Ktien U Blei, ban
+              duwai, bad ban sam ïa ka ktien jong U bad ban pynshlur ïa ki kumno
+              ban shakri ïa ka kam U Kynrad ha kiba bun ki bynta.
+            </p>
+          </div>
+        </div>
+
+        <div class="bottom-buttons">
+          <a href="../History/Ka jinsdang jong ka JSHP.html" class="btn"
+            >📖 History</a
+          >
+          <a href="nongkitkam.html" class="btn">👥 Nongkitkam</a>
+          <!-- Video 1  <a href="Video.html" class="btn">🎥 Video</a>-->
+        </div>
+      </section>
+      <!---Notification-->
+   <!-- Notifications Section -->
+
+
+      <section id="gallery"></section>
+
+      <!---Contact Section-->
+      <section id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-container">
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div class="contact-details">
+                <h4>Address</h4>
+                <p>Mawkhar Mission Compound 
+                  <br />East Khasi Hills- 793002
+                  <br />Shillong, Meghalaya
+                </p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📞</div>
+              <div class="contact-details">
+                <h4>Phone</h4>
+                <p>+91 70058 30409</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">✉️</div>
+              <div class="contact-details">
+                <h4>Email</h4>
+                <p>jshpshillong1993@gmail.com</p>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form">
+            <h3 style="margin-bottom: 20px; color: #2c3e50">
+              Send us a Message
+            </h3>
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" required />
+              </div>
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" required />
+              </div>
+              <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea id="message" rows="5" required></textarea>
+              </div>
+              <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    
+
+    <section class="footer">
+      <h4>Copyright &copy; 2025 JSHP Shillong. All rights reserved.</h4>
+    </section>
+    </main>
+
+
+<!------Java Script for Navbar -->
+    <script>
+      // Mobile menu toggle
+      const menuToggle = document.getElementById("menuToggle");
+      const navLinks = document.getElementById("navLinks");
+      const links = document.querySelectorAll(".nav-links a");
+
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+        menuToggle.classList.toggle("active");
+      });
+
+      // Close mobile menu when clicking on a link
+      links.forEach((link) => {
+        link.addEventListener("click", () => {
+          links.forEach((l) => l.classList.remove("active"));
+          link.classList.add("active");
+          navLinks.classList.remove("open");
+          menuToggle.classList.remove("active");
+        });
+      });
+
+      // Active navigation based on scroll position
+      window.addEventListener("scroll", () => {
+        let fromTop = window.scrollY + 150;
+        links.forEach((link) => {
+          const section = document.querySelector(link.getAttribute("href"));
+          if (
+            section &&
+            section.offsetTop <= fromTop &&
+            section.offsetTop + section.offsetHeight > fromTop
+          ) {
+            links.forEach((l) => l.classList.remove("active"));
+            link.classList.add("active");
+          }
+        });
+      });
+
+      // Form submission handling
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Thank you for your message! We will get back to you soon.");
+          this.reset();
+        });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            window.scrollTo({
+              top: target.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Responsive image loading
+      window.addEventListener("resize", function () {
+        // This would typically handle responsive image loading
+        // For now, we're using CSS for responsiveness
+      });
+    </script>
+     </main>
+  </body>
+</html>

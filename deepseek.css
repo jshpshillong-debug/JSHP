@@ -88,7 +88,7 @@ body{
     display:flex}
 .nav-links{
     position:absolute;
-    top:62px;
+    top:60px;
     left:0;
     width:100%;
     background:rgba(22, 27, 34, 0.9);

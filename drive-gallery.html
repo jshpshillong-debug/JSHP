@@ -7,25 +7,26 @@
     <title>JSHP SHILLONG</title>
     <link rel="icon" href="img/emlem.png" alt="icon" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="script.js" />
-     <link
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
   </head>
+
   <body>
+    <!-- NAVIGATION -->
     <header class="navbar">
       <div class="container">
         <div><img src="img/JSHP Emblem.png" class="logo" alt="logo" /></div>
 
         <nav class="nav-links" id="navLinks">
-          <a href="#home" class="active">🏠Home</a>
+          <a href="#home" class="">🏠Home</a>
           <a href="#about">📖About JSHP</a>
           <a href="../Video/video page 1.html">🎬Videos</a>
           <a href="../Notification/notification&programe.html"
             >📅Notification</a
           >
-          <a href="#">📅Gallery</a>
+          <a href="#" class="active">📸Gallery</a>
           <a href="#contact">☎️Contact</a>
         </nav>
         <button
@@ -40,191 +41,18 @@
       </div>
     </header>
 
-
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background: #fff;
-      }
-
-      h1 {
-        text-align: center;
-        margin: 20px 0;
-        color: #333;
-      }
-
-      /* Gallery */
-      .gallery {
-        column-count: 3;
-        column-gap: 15px;
-        padding: 20px;
-      }
-
-      .gallery-item {
-        position: relative;
-        margin-bottom: 20px;
-        border-radius: 6px;
-        background: #fafafa;
-        overflow: hidden;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      }
-
-      .gallery-item img {
-        width: 100%;
-        display: block;
-        cursor: pointer;
-        border-radius: 6px;
-      }
-
-      /* Desktop hover buttons */
-      .hover-btn {
-        position: absolute;
-        top: 8px;
-        background: rgba(0, 0, 0, 0.7);
-        color: #fff;
-        padding: 5px;
-        font-size: 16px;
-        border-radius: 6px;
-        display: none;
-        text-decoration: none;
-        cursor: pointer;
-        z-index: 5;
-      }
-
-      .download-btn {
-        right: 8px;
-      }
-
-      .share-btn {
-        right: 48px;
-      }
-
-      .gallery-item:hover .hover-btn {
-        display: block;
-      }
-
-      /* Mobile Buttons below img */
-      .mobile-buttons {
-        display: none;
-        text-align: center;
-        padding: 10px 0;
-      }
-
-      .mobile-btn {
-        margin: 0 10px;
-        border: none;
-        background: #222;
-        color: #fff;
-        padding: 10px 16px;
-        border-radius: 6px;
-        font-size: 16px;
-        cursor: pointer;
-      }
-
-      @media (max-width: 768px) {
-        .gallery {
-          column-count: 1;
-          padding: 10px;
-        }
-
-        .hover-btn {
-          display: none !important;
-        }
-
-        .mobile-buttons {
-          display: block;
-        }
-      }
-
-      /* Modal (Desktop only) */
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 999;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.95);
-        align-items: center;
-        justify-content: center;
-      }
-
-      .modal img {
-        max-width: 80%;
-        max-height: 90%;
-        border-radius: 6px;
-      }
-
-      .close,
-      .prev,
-      .next {
-        position: absolute;
-        cursor: pointer;
-        color: #fff;
-        background: rgba(0, 0, 0, 0.6);
-        padding: 10px 14px;
-        border-radius: 6px;
-        font-size: 22px;
-      }
-
-      .close {
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      .prev {
-        left: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-
-      .next {
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-
-      /* ⭐ NEW: Modal Share + Download */
-      .modal-action {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        display: flex;
-        gap: 12px;
-        z-index: 1000;
-      }
-
-      .modal-btn {
-        background: rgba(0, 0, 0, 0.7);
-        color: #fff;
-        padding: 10px;
-        border-radius: 6px;
-        font-size: 18px;
-        cursor: pointer;
-      }
-
-      @media (max-width: 768px) {
-        .modal {
-          display: none !important;
-        }
-      }
-    </style>
-  </head>
-
-  <body>
+    <!-- GALLERY -->
     <h1>JSHP Photo Gallery</h1>
-
     <div class="gallery" id="gallery"></div>
 
-    <!-- Desktop Modal -->
+    <!-- MODAL VIEW -->
     <div id="modal" class="modal">
       <span class="close">&times;</span>
       <span class="prev">&#10094;</span>
       <span class="next">&#10095;</span>
       <img id="modalImage" src="" />
 
-      <!-- ⭐ NEW: Share + Download -->
+      <!-- Download + Share -->
       <div class="modal-action">
         <span class="modal-btn" id="modalShare"
           ><i class="fas fa-share-alt"></i
@@ -235,12 +63,174 @@
       </div>
     </div>
 
+    <!-- CONTACT SECTION -->
+    <main>
+      <section>
+        <h1>Contact</h1>
+        <p>Contact information here.</p>
+      </section>
+    </main>
+
+    <section class="footer">
+      <h4>Copyright &copy; 2025 JSHP Shillong. All rights reserved.</h4>
+    </section>
+
+    <!-- STYLES -->
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #fff;
+      }
+      h1 {
+        text-align: center;
+        margin: 20px 0;
+        color: #333;
+      }
+
+      .gallery {
+        column-count: 3;
+        column-gap: 15px;
+        padding: 20px;
+      }
+
+      .gallery-item {
+        position: relative;
+        margin-bottom: 20px;
+        border-radius: 6px;
+        overflow: hidden;
+        background: #fafafa;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      .gallery-item img {
+        width: 100%;
+        cursor: pointer;
+        display: block;
+      }
+
+      .hover-btn {
+        position: absolute;
+        top: 8px;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 6px;
+        color: #fff;
+        border-radius: 6px;
+        display: none;
+        cursor: pointer;
+        z-index: 3;
+      }
+      .download-btn {
+        right: 8px;
+      }
+      .share-btn {
+        right: 48px;
+      }
+
+      .gallery-item:hover .hover-btn {
+        display: block;
+      }
+
+      .mobile-buttons {
+        display: none;
+        padding: 10px;
+        text-align: center;
+      }
+      .mobile-btn {
+        background: #222;
+        color: #fff;
+        border: none;
+        padding: 8px 14px;
+        border-radius: 6px;
+        margin: 0 8px;
+        cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+        .gallery {
+          column-count: 1;
+          padding: 10px;
+        }
+        .hover-btn {
+          display: none !important;
+        }
+        .mobile-buttons {
+          display: block;
+        }
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.95);
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+      }
+      .modal img {
+        max-width: 80%;
+        max-height: 90%;
+      }
+
+      .prev,
+      .next {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 10px 14px;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 22px;
+        cursor: pointer;
+      }
+      .close {
+        top: px;
+        left: 50%;
+        align-items: center;
+        position: absolute;
+
+        font-size: 30px;
+        color: #fff;
+      }
+      .prev {
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .next {
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .modal-action {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        gap: 12px;
+        z-index: 1000;
+      }
+      .modal-btn {
+        background: rgba(0, 0, 0, 0.7);
+        padding: 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 18px;
+      }
+      @media (max-width: 768px) {
+        .modal {
+          display: none !important;
+        }
+      }
+    </style>
+
+    <!-- SCRIPTS -->
     <script>
       const API_KEY = "AIzaSyDtpds40pfDlP5APglwnUGOBz4am2mTOJ4";
       const FOLDER_ID = "1nJ6ge0PamJLDPrdM6x7t-_EkqIwauGC3";
 
       const gallery = document.getElementById("gallery");
-
       let images = [];
       let currentIndex = 0;
 
@@ -249,12 +239,15 @@
           const query = `'${FOLDER_ID}' in parents and mimeType contains 'image/' and trashed=false`;
           const url = `https://www.googleapis.com/drive/v3/files?q=${encodeURIComponent(
             query
-          )}&key=${API_KEY}&fields=files(id,name)&pageSize=1000`;
+          )}&key=${API_KEY}&fields=files(id,name,createdTime)&pageSize=1000`;
 
           const res = await fetch(url);
           const data = await res.json();
-          return data.files || [];
-        } catch (err) {
+
+          return (data.files || []).sort(
+            (a, b) => new Date(b.createdTime) - new Date(a.createdTime)
+          );
+        } catch {
           gallery.innerHTML =
             "<p style='text-align:center;color:red;'>Failed to load</p>";
           return [];
@@ -266,18 +259,19 @@
           id: f.id,
           name: f.name,
           src: `https://lh3.googleusercontent.com/d/${f.id}=w2000`,
+          date: f.createdTime,
         }));
 
-        files.forEach((file, index) => {
+        gallery.innerHTML = "";
+
+        files.forEach((file, i) => {
           const item = document.createElement("div");
           item.className = "gallery-item";
 
           const img = document.createElement("img");
           img.src = `https://lh3.googleusercontent.com/d/${file.id}=w800`;
-          img.alt = file.name;
-          img.dataset.index = index;
+          img.dataset.index = i;
 
-          /* Desktop hover buttons */
           const downloadBtn = document.createElement("a");
           downloadBtn.className = "hover-btn download-btn";
           downloadBtn.href = `https://drive.google.com/uc?export=download&id=${file.id}`;
@@ -289,22 +283,21 @@
           shareBtn.innerHTML = '<i class="fas fa-share-alt"></i>';
           shareBtn.onclick = () => shareImage(img.src, file.name);
 
-          /* Mobile Buttons */
           const mobileButtons = document.createElement("div");
           mobileButtons.className = "mobile-buttons";
 
-          const mobileDownload = document.createElement("a");
-          mobileDownload.className = "mobile-btn";
-          mobileDownload.innerHTML = '<i class="fas fa-download"></i>';
-          mobileDownload.href = downloadBtn.href;
+          const mDown = document.createElement("a");
+          mDown.className = "mobile-btn";
+          mDown.innerHTML = '<i class="fas fa-download"></i>';
+          mDown.href = downloadBtn.href;
 
-          const mobileShare = document.createElement("button");
-          mobileShare.className = "mobile-btn";
-          mobileShare.innerHTML = '<i class="fas fa-share-alt"></i>';
-          mobileShare.onclick = () => shareImage(img.src, file.name);
+          const mShare = document.createElement("button");
+          mShare.className = "mobile-btn";
+          mShare.innerHTML = '<i class="fas fa-share-alt"></i>';
+          mShare.onclick = () => shareImage(img.src, file.name);
 
-          mobileButtons.appendChild(mobileDownload);
-          mobileButtons.appendChild(mobileShare);
+          mobileButtons.appendChild(mDown);
+          mobileButtons.appendChild(mShare);
 
           item.appendChild(img);
           item.appendChild(downloadBtn);
@@ -314,7 +307,7 @@
 
           img.addEventListener("click", () => {
             if (window.innerWidth <= 768) return;
-            openModal(index);
+            openModal(i);
           });
         });
       }
@@ -324,18 +317,20 @@
           navigator.share({ title: name, url: url });
         } else {
           navigator.clipboard.writeText(url);
-          alert("Image link copied!");
+          alert("Link copied!");
         }
       }
 
+      // MODAL FUNCTIONS
       const modal = document.getElementById("modal");
       const modalImage = document.getElementById("modalImage");
+
+      const modalShare = document.getElementById("modalShare");
+      const modalDownload = document.getElementById("modalDownload");
+
       const closeBtn = document.querySelector(".close");
       const prevBtn = document.querySelector(".prev");
       const nextBtn = document.querySelector(".next");
-
-      const modalShare = document.getElementById("modalShare"); // ⭐ NEW
-      const modalDownload = document.getElementById("modalDownload"); // ⭐ NEW
 
       function openModal(i) {
         currentIndex = i;
@@ -345,10 +340,7 @@
 
       function showImage(i) {
         modalImage.src = images[i].src;
-
-        // ⭐ Update modal buttons for current image
         modalShare.onclick = () => shareImage(images[i].src, images[i].name);
-
         modalDownload.onclick = () => {
           const a = document.createElement("a");
           a.href = `https://drive.google.com/uc?export=download&id=${images[i].id}`;
@@ -372,51 +364,26 @@
 
       fetchImages().then(renderGallery);
     </script>
-    <main>
-      <!-- Contact Section -->
-      <section>
-        <div class="contact">
-          <div class="contactinfo"></div>
-          <div class="contactform"></div>
-        </div>
-        <h1>Contact</h1>
-        <p>Contact information here.</p>
-      </section>
-    </main>
 
-    <section class="footer">
-      <h4>Copyright &copy; 2025 JSHP Shillong. All rights reserved.</h4>
-    </section>
-    <script src="script.js">const menuToggle=document.getElementById('menuToggle');
-const navLinks=document.getElementById('navLinks');
-const links=document.querySelectorAll('.nav-links a');
+    <!-- NAV MENU SCRIPT -->
+    <script>
+      const menuToggle = document.getElementById("menuToggle");
+      const navLinks = document.getElementById("navLinks");
+      const links = document.querySelectorAll(".nav-links a");
 
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+        menuToggle.classList.toggle("active");
+      });
 
-menuToggle.addEventListener('click',()=>{
-navLinks.classList.toggle('open');
-menuToggle.classList.toggle('active');
-});
-
-
-links.forEach(link=>{
-link.addEventListener('click',()=>{
-links.forEach(l=>l.classList.remove('active'));
-link.classList.add('active');
-navLinks.classList.remove('open');
-menuToggle.classList.remove('active');
-});
-});
-
-
-window.addEventListener('scroll',()=>{
-let fromTop=window.scrollY+150;
-links.forEach(link=>{
-const section=document.querySelector(link.getAttribute('href'));
-if(section.offsetTop<=fromTop&&section.offsetTop+section.offsetHeight>fromTop){
-links.forEach(l=>l.classList.remove('active'));
-link.classList.add('active');
-}
-});
-});</script>
+      links.forEach((link) => {
+        link.addEventListener("click", () => {
+          links.forEach((l) => l.classList.remove("active"));
+          link.classList.add("active");
+          navLinks.classList.remove("open");
+          menuToggle.classList.remove("active");
+        });
+      });
+    </script>
   </body>
 </html>

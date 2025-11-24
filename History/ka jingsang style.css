@@ -1,0 +1,97 @@
+
+   
+      .container-history {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 30px 40px;
+        background: #fff;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+      }
+      h1 {
+        text-align: center;
+        color: #3b6b49;
+        margin-bottom: 30px;
+        font-size: 2em;
+      }
+      .meta::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 4px;
+        background-color: #3b6b49;
+        margin: 10px auto 0 auto;
+      }
+
+      h4 {
+        text-align: justify;
+        margin-bottom: 16px;
+        font-size: 1em;
+      }
+      h2 {
+        color: #3b6b49;
+        margin-bottom: 30px;
+        font-size: 1em;
+        text-decoration: underline;
+      }
+      .columns {
+        column-count: 2;
+        column-gap: 50px;
+        column-rule: 2px solid #ccc;
+      }
+      p {
+        text-align: justify;
+        margin-bottom: 16px;
+        text-indent: 2em;
+        font-size: 1em;
+      }
+      h3{
+        text-align: justify;
+        margin-bottom: 16px;
+        text-indent: 2em;
+        font-size: 1em;
+        font-weight: 100;
+      }
+     .columns h3:first-of-type::first-letter {
+       float: none;
+       font-size: 2.5em;
+       line-height: 1.2;
+        margin-right: 0.2em;
+       font-weight: bold;
+      color: #3b6b49;
+}
+ .tight-list {
+    margin-top: 0em;   /* removes extra space above the list */
+    padding-left: 1.8em; /* keeps proper indentation */
+  }
+  .tight-list li {
+    margin-bottom: 0.1em; /* optional: reduce spacing between list items */
+  }
+    ol > li .members {
+    list-style-type: lower-alpha; /* alphabetical */
+    padding-left: 20px; /* small indent under main person */
+    margin: 0;
+  }
+.members li {
+    margin-bottom: 6px; 
+  }
+
+      .meta{
+      color:#3b6b49bc;
+      margin-bottom:10px;
+      margin-top: 5px;
+}
+
+
+  
+
+      @media (max-width: 900px) {
+        .columns {
+          column-count: 1;
+          column-gap: 0;
+          column-rule: none;
+        }
+        h3::first-letter {
+          font-size: 2em;
+        }
+      }

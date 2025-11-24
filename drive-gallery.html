@@ -408,7 +408,7 @@
 
           const downloadBtn = document.createElement("a");
           downloadBtn.className = "download-btn";
-          downloadBtn.href = file.webViewLink;
+          downloadBtn.href = `https://drive.google.com/uc?export=download&id=${file.id}`;
           downloadBtn.target = "_blank";
           downloadBtn.title = "Download";
           downloadBtn.innerHTML = '<i class="fas fa-download"></i>';

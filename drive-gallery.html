@@ -46,6 +46,312 @@
         margin: 5px 0;
         font-size: 14px;
       }
+      /* Download button on gallery item */
+      .download-btn {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        padding: 6px 10px;
+        border-radius: 6px;
+        text-decoration: none;
+        display: none;
+      }
+      .gallery-item:hover .download-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Modal */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      .modal-content {
+        max-width: 90%;
+        max-height: 90%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .modal img {
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 4px;
+        object-fit: contain;
+      }
+
+      /* Modal Buttons on Top */
+      .modal-buttons {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        gap: 10px;
+        z-index: 1001;
+      }
+      .modal-btn {
+        padding: 8px 12px;
+        font-size: 16px;
+        border-radius: 6px;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+      }
+
+      /* Close and Arrows */
+      .close,
+      .prev,
+      .next {
+        position: absolute;
+        cursor: pointer;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.5);
+        border: none;
+        border-radius: 50%;
+        padding: 10px;
+        font-size: 24px;
+      }
+      .close {
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto;
+        border-radius: 6px;
+        font-size: 28px;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 8px 12px;
+        z-index: 1002;
+      }
+      .prev {
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .next {
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .gallery {
+          column-count: 1;
+          padding: 10px;
+        }
+        .download-btn {
+          display: none !important;
+        }
+        .modal-btn {
+          padding: 10px 14px;
+          font-size: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JSHP Photo Gallery</h1>
+
+    <div class="gallery" id="gallery"></div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+      <span class="close">&times;</span>
+      <span class="prev">&#10094;</span>
+      <span class="next">&#10095;</span>
+      <div class="modal-content">
+        <img id="modalImage" src="" alt="Full Image" />
+        <div class="modal-buttons">
+          <a id="modalDownload" class="modal-btn"
+            ><i class="fas fa-download"></i
+          ></a>
+          <button id="modalShare" class="modal-btn">
+            <i class="fas fa-share-alt"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const API_KEY = "AIzaSyDtpds40pfDlP5APglwnUGOBz4am2mTOJ4"; // Replace
+      const FOLDER_ID = "1nJ6ge0PamJLDPrdM6x7t-_EkqIwauGC3"; // Replace
+      const gallery = document.getElementById("gallery");
+
+      let images = [];
+      let currentIndex = 0;
+
+      // Fetch images from Google Drive
+      async function fetchImages() {
+        try {
+          const query = `'${FOLDER_ID}' in parents and mimeType contains 'image/' and trashed=false`;
+          const url = `https://www.googleapis.com/drive/v3/files?q=${encodeURIComponent(
+            query
+          )}&key=${API_KEY}&fields=files(id,name)&pageSize=1000`;
+          const res = await fetch(url);
+          if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+          const data = await res.json();
+          return data.files || [];
+        } catch (err) {
+          console.error(err);
+          gallery.innerHTML =
+            "<p style='text-align:center;color:red;'>Failed to load gallery</p>";
+          return [];
+        }
+      }
+
+      // Render gallery
+      function renderGallery(files) {
+        images = files.map((f) => ({
+          id: f.id,
+          name: f.name,
+          src: `https://lh3.googleusercontent.com/d/${f.id}=w1600`,
+        }));
+
+        files.forEach((file, index) => {
+          const item = document.createElement("div");
+          item.className = "gallery-item";
+
+          const img = document.createElement("img");
+          img.src = `https://lh3.googleusercontent.com/d/${file.id}=w800`;
+          img.alt = file.name;
+          img.dataset.index = index;
+
+          const caption = document.createElement("p");
+          caption.textContent = file.name;
+
+          const downloadBtn = document.createElement("a");
+          downloadBtn.className = "download-btn";
+          downloadBtn.href = `https://drive.google.com/uc?export=download&id=${file.id}`;
+          downloadBtn.setAttribute("download", file.name);
+          downloadBtn.innerHTML = '<i class="fas fa-download"></i>';
+
+          item.appendChild(img);
+          item.appendChild(caption);
+          item.appendChild(downloadBtn);
+          gallery.appendChild(item);
+
+          img.addEventListener("click", () => openModal(index));
+        });
+      }
+
+      // Modal
+      const modal = document.getElementById("modal");
+      const modalImage = document.getElementById("modalImage");
+      const modalDownload = document.getElementById("modalDownload");
+      const modalShare = document.getElementById("modalShare");
+      const closeBtn = modal.querySelector(".close");
+      const prevBtn = modal.querySelector(".prev");
+      const nextBtn = modal.querySelector(".next");
+
+      function openModal(index) {
+        currentIndex = index;
+        showImage(currentIndex);
+        modal.style.display = "flex";
+      }
+
+      function showImage(index) {
+        const img = images[index];
+        modalImage.src = img.src;
+        modalDownload.href = `https://drive.google.com/uc?export=download&id=${img.id}`;
+        modalDownload.setAttribute("download", img.name);
+      }
+
+      closeBtn.addEventListener("click", () => (modal.style.display = "none"));
+      prevBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+      });
+      nextBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+      });
+
+      modalShare.addEventListener("click", () => {
+        const img = images[currentIndex];
+        if (navigator.share) {
+          navigator.share({ title: img.name, url: img.src });
+        } else {
+          navigator.clipboard
+            .writeText(img.src)
+            .then(() => alert("Image URL copied!"));
+        }
+      });
+
+      window.addEventListener("click", (e) => {
+        if (e.target === modal) modal.style.display = "none";
+      });
+
+      fetchImages().then(renderGallery);
+    </script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSHP Gallery</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #fff;
+      }
+      h1 {
+        text-align: center;
+        margin: 20px 0;
+        color: #333;
+      }
+
+      /* Gallery */
+      .gallery {
+        column-count: 3;
+        column-gap: 15px;
+        padding: 20px;
+      }
+      .gallery-item {
+        position: relative;
+        margin-bottom: 20px;
+        overflow: hidden;
+        border-radius: 6px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        background: #fafafa;
+      }
+      .gallery-item img {
+        width: 100%;
+        display: block;
+        cursor: pointer;
+        border-radius: 6px;
+      }
+      .gallery-item p {
+        text-align: center;
+        margin: 5px 0;
+        font-size: 14px;
+      }
       .download-btn {
         position: absolute;
         top: 8px;

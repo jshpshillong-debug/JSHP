@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JSHP Gallery</title>
-    <link rel="icon" href="img/emlem.png" />
-    <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
     <style>
-      /* Gallery styles (kept simple) */
       body {
         font-family: Arial, sans-serif;
-        padding: 0;
         margin: 0;
+        padding: 0;
         background: #fff;
       }
       h1 {
@@ -25,38 +22,35 @@
       }
       .gallery {
         column-count: 3;
-        column-gap: 20px;
-        padding: 3% 15%;
+        column-gap: 15px;
+        padding: 20px;
       }
       .gallery-item {
         position: relative;
+        margin-bottom: 20px;
         overflow: hidden;
         border-radius: 6px;
-        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         background: #fafafa;
-        margin-bottom: 20px;
-      } /* Added margin for spacing */
+      }
       .gallery-item img {
         width: 100%;
-        height: auto;
-
         display: block;
         cursor: pointer;
+        border-radius: 6px;
       }
       .gallery-item p {
-        /* Style for the caption */
         text-align: center;
-        margin: 8px 0;
+        margin: 5px 0;
         font-size: 14px;
-        color: #333;
       }
       .download-btn {
         position: absolute;
         top: 8px;
         right: 8px;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.6);
         color: #fff;
-        padding: 8px;
+        padding: 6px 10px;
         border-radius: 6px;
         text-decoration: none;
         display: none;
@@ -64,557 +58,81 @@
       .gallery-item:hover .download-btn {
         display: block;
       }
-      /* Modal */
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 10000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        align-items: center; /* vertically center */
-        justify-content: center; /* horizontally center */
-        padding: 20px;
-        box-sizing: border-box;
-      }
-      .modal img {
-        transition: transform 0.3s ease;
-        cursor: zoom-in; /* indicates zoom available */
-      }
-
-      .modal-content {
-        max-width: 94%;
-        max-height: 94%;
-        position: relative;
-        align-items: center;
-        justify-content: center;
-      }
-      .modal img {
-        max-width: 100%;
-        max-height: 100%;
-        border-radius: 4px;
-        object-fit: contain; /* ensures it scales inside modal */
-        display: block;
-        margin: 0 auto;
-      }
-
-      .close {
-        position: absolute;
-        top: -48px;
-        right: 0;
-        color: #fff;
-        font-size: 30px;
-        cursor: pointer;
-      }
-      .prev,
-      .next {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #fff;
-        font-size: 30px;
-        cursor: pointer;
-        width: 48px;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(255, 255, 255, 0.08);
-        border-radius: 50%;
-      }
-      .prev {
-        left: -60px;
-      }
-      .next {
-        right: -60px;
-      }
-      .modal-buttons {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-      .modal-btn {
-        padding: 10px;
-        background: rgba(255, 255, 255, 0.08);
-        color: #fff;
-        border-radius: 6px;
-        border: none;
-        cursor: pointer;
-      }
-      @media (max-width: 900px) {
-        .gallery {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .gallery-item img {
-          height: 180px;
-        }
-      }
-      @media (max-width: 480px) {
-        .gallery {
-          grid-template-columns: 1fr;
-        }
-        .gallery-item img {
-          height: 240px;
-        }
-        .prev,
-        .next {
-          display: none;
-        }
-      }
-      /* Mobile Layout for Download Button */
-      @media (max-width: 600px) {
-        .gallery {
-          column-count: 1 !important;
-          padding: 10px !important;
-        }
-
-        .gallery-item {
-          display: flex;
-
-          align-items: center;
-        }
-        .gallery-item img {
-          width: 100%;
-          height: auto;
-          /*--border-radius: 10px;--*/
-          cursor: pointer;
-        }
-
-        .download-btn {
-          position: static !important;
-          display: block !important;
-          margin: 10px auto 0 auto;
-          background: rgba(0, 0, 0, 0.6);
-          padding: 8px 12px;
-          border-radius: 8px;
-        }
-
-        .download-btn i {
-          font-size: 18px;
-        }
-      }
-      /* Mobile Layout: always show download/share buttons */
       @media (max-width: 768px) {
-        .gallery-item {
-          position: relative;
+        .gallery {
+          column-count: 1;
+          padding: 10px;
         }
-
         .download-btn {
-          display: block !important; /* always visible */
-          position: static !important; /* no absolute positioning */
-          margin: 5px auto;
-          padding: 6px 10px;
-          border-radius: 6px;
-          background: rgba(0, 0, 0, 0.6);
-          text-align: center;
-          color: #fff;
-        }
-
-        .modal-buttons {
-          flex-direction: row;
-          gap: 10px;
-          top: auto;
-          bottom: 10px;
-          right: 50%;
-          transform: translateX(50%);
-        }
-
-        .modal-btn {
-          padding: 8px 12px;
-          font-size: 16px;
-        }
-      }
-      /* Mobile: overlay buttons inside image */
-      @media (max-width: 768px) {
-        .gallery-item {
-          position: relative; /* needed for absolute buttons */
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .mobile-buttons {
-          position: absolute;
-          bottom: 10px; /* overlay at bottom of image */
-          left: 50%;
-          transform: translateX(-50%);
-          display: flex;
-          gap: 10px;
-          z-index: 10;
-        }
-
-        .mobile-buttons a,
-        .mobile-buttons button {
-          padding: 6px 12px;
-          border-radius: 6px;
-          background: rgba(0, 0, 0, 0.6);
-          color: #fff;
-          border: none;
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 18px;
-          text-decoration: none;
-        }
-
-        .gallery-item img {
-          width: 100%;
-          height: auto;
           display: block;
-        }
-      }
-
-      /* Mobile: show modal prev/next arrows */
-      @media (max-width: 768px) {
-        .prev,
-        .next {
-          display: flex; /* make visible */
-          top: 50%;
-          transform: translateY(-50%);
-          font-size: 28px;
-          width: 40px;
-          height: 40px;
-          background: rgba(0, 0, 0, 0.4);
-          border-radius: 50%;
-          color: #fff;
-          justify-content: center;
-          align-items: center;
-          cursor: pointer;
-          position: absolute;
-          z-index: 20;
-        }
-
-        .prev {
-          left: 10px;
-        }
-
-        .next {
-          right: 10px;
+          position: static;
+          margin: 5px auto;
         }
       }
     </style>
   </head>
   <body>
-    <header class="navbar">
-      <div class="container">
-        <div><img src="img/JSHP Emblem.png" class="logo" alt="logo" /></div>
-
-        <nav class="nav-links" id="navLinks">
-          <a href="index.html" class="active">🏠Home</a>
-          <a href="../main/index.html">📖About JSHP</a>
-          <a href="../Video/video page 1.html">🎬Videos</a>
-          <a href="../Notification/notification&programe.html"
-            >📅Notification</a
-          >
-          <a href="../Gallery/Gallery.html">📅Gallery</a>
-          <a href="#contact">☎️Contact</a>
-        </nav>
-        <button
-          class="menu-toggle"
-          id="menuToggle"
-          aria-label="Toggle navigation"
-        >
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </button>
-      </div>
-    </header>
-
     <h1>Photo Gallery</h1>
-
-    <div class="gallery" id="gallery">
-      <!-- Images will be loaded here via JS -->
-    </div>
-    <div class="gallery-item">
-      <div class="mobile-buttons">
-        <a class="download-btn" href="..." download
-          ><i class="fas fa-download"></i
-        ></a>
-        <button class="share-btn"><i class="fas fa-share-alt"></i></button>
-      </div>
-    </div>
-
-    <!-- Modal for viewing images -->
-    <div id="imageModal" class="modal" role="dialog" aria-hidden="true">
-      <div class="modal-buttons">
-        <a id="modalDownload" class="modal-btn" href="#" download
-          ><i class="fas fa-download"></i
-        ></a>
-        <button id="modalShare" class="modal-btn">Share</button>
-      </div>
-      <div class="modal-content">
-        <span class="close" aria-label="Close">&times;</span>
-        <img id="modalImage" src="" alt="Full Image" />
-        <span class="prev" aria-hidden="true">&#10094;</span>
-        <span class="next" aria-hidden="true">&#10095;</span>
-      </div>
-    </div>
+    <div class="gallery" id="gallery"></div>
 
     <script>
-      // ================== CONFIGURATION ==================
-      const API_KEY = "AIzaSyDtpds40pfDlP5APglwnUGOBz4am2mTOJ4"; // Replace with your API key
-      const DRIVE_FOLDER_ID = "1nJ6ge0PamJLDPrdM6x7t-_EkqIwauGC3"; // Your folder ID
+      const API_KEY = "AIzaSyDtpds40pfDlP5APglwnUGOBz4am2mTOJ4"; // Replace with your API Key
+      const FOLDER_ID = "1nJ6ge0PamJLDPrdM6x7t-_EkqIwauGC3"; // Replace with your Drive folder ID
       const gallery = document.getElementById("gallery");
 
-      // ================== FETCH IMAGES FROM GOOGLE DRIVE ==================
       async function fetchImages() {
         try {
-          const query = `'${DRIVE_FOLDER_ID}' in parents and mimeType contains 'image/' and trashed = false`;
+          const query = `'${FOLDER_ID}' in parents and mimeType contains 'image/' and trashed=false`;
           const url = `https://www.googleapis.com/drive/v3/files?q=${encodeURIComponent(
             query
-          )}&key=${API_KEY}&fields=files(id,name,webContentLink)&pageSize=1000`;
-
-          const response = await fetch(url);
-          if (!response.ok)
-            throw new Error(`HTTP error! status: ${response.status}`);
-          const data = await response.json();
+          )}&key=${API_KEY}&fields=files(id,name)&pageSize=1000`;
+          const res = await fetch(url);
+          if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+          const data = await res.json();
           return data.files || [];
         } catch (err) {
           console.error("Error fetching images:", err);
-          gallery.innerHTML = `<p style="text-align:center; color:red;">Failed to load gallery. Check console for details.</p>`;
+          gallery.innerHTML =
+            "<p style='text-align:center;color:red;'>Failed to load gallery. Check console.</p>";
           return [];
         }
       }
 
-      // ================== RENDER GALLERY ==================
       function renderGallery(files) {
         if (!files.length) {
           gallery.innerHTML =
-            "<p style='text-align:center;'>No images found in the folder.</p>";
+            "<p style='text-align:center;'>No images found.</p>";
           return;
         }
 
-        const fragment = document.createDocumentFragment();
-        files.forEach((file, index) => {
+        files.forEach((file) => {
           const item = document.createElement("div");
           item.className = "gallery-item";
 
           const img = document.createElement("img");
-          img.src = `https://lh3.googleusercontent.com/d/${file.id}=w2000`;
-
+          img.src = `https://lh3.googleusercontent.com/d/${file.id}=w800`;
           img.alt = file.name;
           img.title = file.name;
-          img.dataset.index = index;
 
           const caption = document.createElement("p");
           caption.textContent = file.name;
 
+          // Download button - direct download
           const downloadBtn = document.createElement("a");
           downloadBtn.className = "download-btn";
           downloadBtn.href = `https://drive.google.com/uc?export=download&id=${file.id}`;
-          downloadBtn.target = "_blank";
-          downloadBtn.title = "Download";
+          downloadBtn.setAttribute("download", file.name);
           downloadBtn.innerHTML = '<i class="fas fa-download"></i>';
 
           item.appendChild(img);
           item.appendChild(caption);
           item.appendChild(downloadBtn);
-          fragment.appendChild(item);
-        });
-
-        gallery.appendChild(fragment);
-        setupModal(files);
-      }
-
-      // ================== MODAL SETUP ==================
-      let currentIndex = 0;
-      const modal = document.getElementById("imageModal");
-      const modalImage = document.getElementById("modalImage");
-      const modalDownload = document.getElementById("modalDownload");
-      const modalShare = document.getElementById("modalShare");
-      const closeBtn = document.querySelector(".close");
-      const prevBtn = document.querySelector(".prev");
-      const nextBtn = document.querySelector(".next");
-
-      let images = [];
-
-      function setupModal(files) {
-        // In setupModal
-        images = files.map((file) => ({
-          id: file.id,
-          src: `https://lh3.googleusercontent.com/d/${file.id}=w2000`,
-          dl: `https://drive.google.com/uc?export=download&id=${file.id}`,
-
-          name: file.name,
-        }));
-
-        const items = document.querySelectorAll(".gallery-item");
-        items.forEach((item, idx) => {
-          item.addEventListener("click", (e) => {
-            if (e.target.closest(".download-btn")) return;
-            showImage(idx);
-          });
+          gallery.appendChild(item);
         });
       }
 
-      function showImage(index) {
-        currentIndex = index;
-        modalImage.src = images[index].src;
-        modalDownload.href = `https://drive.google.com/uc?export=download&id=${images[index].id}`;
-        modalDownload.setAttribute("download", images[index].name);
-        modal.style.display = "flex";
-      }
-
-      // Close modal
-      closeBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-        modalImage.src = "";
-        modal.setAttribute("aria-hidden", "true");
-      });
-
-      // Prev / Next buttons
-      prevBtn.addEventListener("click", () => {
-        showImage((currentIndex - 1 + images.length) % images.length);
-      });
-
-      nextBtn.addEventListener("click", () => {
-        showImage((currentIndex + 1) % images.length);
-      });
-
-      // Share button
-      modalShare.addEventListener("click", () => {
-        const shareUrl = images[currentIndex].src;
-        if (navigator.share) {
-          navigator.share({ title: images[currentIndex].name, url: shareUrl });
-        } else {
-          navigator.clipboard
-            .writeText(shareUrl)
-            .then(() => alert("Image URL copied to clipboard!"));
-        }
-      });
-
-      // Close modal when clicking outside
-      window.addEventListener("click", (e) => {
-        if (e.target === modal) closeBtn.click();
-      });
-
-      // ================== LOAD IMAGES ==================
+      // Load gallery
       fetchImages().then(renderGallery);
-
-      // ================== end LOAD IMAGES ==================
-      files.forEach((file, index) => {
-        const item = document.createElement("div");
-        item.className = "gallery-item";
-
-        const img = document.createElement("img");
-        img.src = `https://lh3.googleusercontent.com/d/${file.id}=w2000`;
-        img.alt = file.name;
-        img.dataset.index = index;
-
-        const caption = document.createElement("p");
-        caption.textContent = file.name;
-
-        // Desktop hover download
-        const downloadBtn = document.createElement("a");
-        downloadBtn.className = "download-btn";
-        downloadBtn.href = `https://drive.google.com/uc?export=download&id=${file.id}`;
-        downloadBtn.target = "_blank"; // open in new tab
-        downloadBtn.innerHTML = '<i class="fas fa-download"></i>';
-
-        // Mobile buttons container
-        const mobileButtons = document.createElement("div");
-        mobileButtons.className = "mobile-buttons";
-
-        // Mobile download
-        const mobileDownload = document.createElement("a");
-        mobileDownload.href = `https://drive.google.com/uc?export=download&id=${file.id}`;
-        mobileDownload.target = "_blank"; // open in new tab
-        mobileDownload.innerHTML = '<i class="fas fa-download"></i>';
-
-        // Mobile share
-        const mobileShare = document.createElement("button");
-        mobileShare.innerHTML = '<i class="fas fa-share-alt"></i>';
-        mobileShare.addEventListener("click", (e) => {
-          e.preventDefault();
-          const url = `https://drive.google.com/uc?export=view&id=${file.id}`;
-          if (navigator.share) {
-            navigator.share({ title: file.name, url });
-          } else {
-            navigator.clipboard
-              .writeText(url)
-              .then(() => alert("Image URL copied to clipboard!"));
-          }
-        });
-
-        mobileButtons.appendChild(mobileDownload);
-        mobileButtons.appendChild(mobileShare);
-
-        // Append everything
-        item.appendChild(img);
-        item.appendChild(caption);
-        item.appendChild(downloadBtn);
-        item.appendChild(mobileButtons);
-
-        gallery.appendChild(item);
-      });
-
-      // ================== MODAL IMAGE ZOOM ==================
-      // ================== MODAL IMAGE ZOOM & PAN ==================
-      let isZoomed = false;
-      let startX = 0,
-        startY = 0,
-        currentX = 0,
-        currentY = 0;
-
-      modalImage.addEventListener("click", () => {
-        if (!isZoomed) {
-          modalImage.style.transform = "scale(2)";
-          modalImage.style.cursor = "move";
-          isZoomed = true;
-        } else {
-          modalImage.style.transform = "translate(0px, 0px) scale(1)";
-          modalImage.style.cursor = "zoom-in";
-          isZoomed = false;
-          currentX = 0;
-          currentY = 0;
-        }
-      });
-
-      // Drag when zoomed
-      modalImage.addEventListener("mousedown", (e) => {
-        if (!isZoomed) return;
-        startX = e.clientX - currentX;
-        startY = e.clientY - currentY;
-        document.addEventListener("mousemove", onDrag);
-        document.addEventListener("mouseup", stopDrag);
-      });
-
-      function onDrag(e) {
-        currentX = e.clientX - startX;
-        currentY = e.clientY - startY;
-        modalImage.style.transform = `translate(${currentX}px, ${currentY}px) scale(2)`;
-      }
-
-      function stopDrag() {
-        document.removeEventListener("mousemove", onDrag);
-        document.removeEventListener("mouseup", stopDrag);
-      }
-
-      // Optional: support touch for mobile pinch
-      modalImage.addEventListener("touchstart", (e) => {
-        if (!isZoomed) return;
-        const touch = e.touches[0];
-        startX = touch.clientX - currentX;
-        startY = touch.clientY - currentY;
-      });
-
-      modalImage.addEventListener("touchmove", (e) => {
-        if (!isZoomed) return;
-        e.preventDefault();
-        const touch = e.touches[0];
-        currentX = touch.clientX - startX;
-        currentY = touch.clientY - startY;
-        modalImage.style.transform = `translate(${currentX}px, ${currentY}px) scale(2)`;
-      });
     </script>
-
-    <script src="navbarscript.js"></script>
   </body>
 </html>

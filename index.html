@@ -482,6 +482,21 @@
         color: #036254;
         transition: 0.2s;
       }
+      /* ✅ Always keep close button visible on mobile */
+.bottom-sheet .close-btn {
+  position: fixed;          /* instead of absolute */
+  top: 18px;
+  right: 18px;
+  z-index: 9999;            /* stays above all content */
+  background: rgba(255,255,255,0.95);
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
       .close-btn:hover {
         color: #000;
@@ -694,10 +709,14 @@
         startHeight;
 
       const showBottomSheet = () => {
-        bottomSheet.classList.add("show");
-        document.body.style.overflowY = "hidden";
-        updateSheetHeight(60);
+      bottomSheet.classList.add("show");
+      document.body.style.overflowY = "hidden";
+      updateSheetHeight(93);
+
+  // ✅ force close button visibility every time
+      closeBtn.style.display = "flex";
       };
+
 
       const updateSheetHeight = (height) => {
         sheetContent.style.height = `${height}vh`;

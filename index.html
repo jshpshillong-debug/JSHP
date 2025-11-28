@@ -100,6 +100,8 @@
         }
       }
     </script>
+        </div>
+      </div>
 
       <button class="show-modal">History</button>
 
@@ -336,7 +338,7 @@
         </p>
 
         </div>
-        <button class="back-btn">Back</button>
+         <button class="back-btn">Back</button>
       </div> 
 
             <div class="header">
@@ -363,28 +365,6 @@
      #about .show-modal {
   display: block;
   margin: 20px auto;   /* ✅ Centers the button horizontally */
-}
-.back-btn {
-  display: block;
-  margin: 20px auto 10px auto;
-  padding: 10px 16px;
-  border-radius: 10px;
-  border: none;
-  font-size: 16px;
-  font-weight: 700;
-  background: linear-gradient(180deg, #00b6c7, #008a97);
-  color: white;
-  cursor: pointer;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-}
-
-.back-btn:active {
-  transform: translateY(1px);
-}
-
-.back-btn:hover {
-  box-shadow: 0 25px 30px rgba(0, 136, 150, 0.16);
-  background: linear-gradient(180deg, #30939c, #017681);
 }
 
 
@@ -444,7 +424,7 @@
         width: 100%;
         position: relative;
         background: #fff;
-        max-height: 93vh;
+        max-height: 100vh;
         height: 50vh;
         max-width: 1150px;
         padding: 25px 30px;
@@ -481,7 +461,7 @@
 
       .header .drag-icon span {
         height: 4px;
-        width: 100px;
+        width: 40px;
         display: block;
         background: #c7d0e1;
         border-radius: 50px;
@@ -494,11 +474,11 @@
         scrollbar-width: none;
       }
 
-    /* Hide scrollbar in WebKit browsers for the "comment" element */
-.bottom-sheet .container-history::-webkit-scrollbar {
-  width: 0px;
-}
-         .bottom-sheet .container-history h2 {
+      .bottom-sheet .container-history::-webkit-scrollbar {
+        width: 0;
+      }
+
+      .bottom-sheet .container-history h2 {
         font-size: 1.8rem;
         text-align: center;
       }
@@ -526,6 +506,29 @@
         color: #000;
         transform: scale(1.1);
       }
+
+      .back-btn {
+  display: block;
+  margin: 20px auto 10px auto;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  background: linear-gradient(180deg, #00b6c7, #008a97);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.back-btn:active {
+  transform: translateY(1px);
+}
+
+.back-btn:hover {
+  box-shadow: 0 25px 30px rgba(0, 136, 150, 0.16);
+  background: linear-gradient(180deg, #30939c, #017681);
+}
       /* About Section */
 
       #about {
@@ -733,17 +736,13 @@
         startHeight;
 
       const showBottomSheet = () => {
-  bottomSheet.classList.add("show");
-  // ✅ Allow outside (page) scrollbar
-  document.body.style.overflowY = "auto";
-  updateSheetHeight(93);
+      bottomSheet.classList.add("show");
+      document.body.style.overflowY = "hidden";
+      updateSheetHeight(93);
 
-  // ✅ Force close button visible
-  closeBtn.style.display = "block";
-  closeBtn.style.opacity = "1";
-  closeBtn.style.pointerEvents = "auto";
-};
-
+  // ✅ force close button visibility every time
+      closeBtn.style.display = "flex";
+      };
 
 
       const updateSheetHeight = (height) => {
@@ -792,6 +791,9 @@
       sheetOverlay.addEventListener("click", hideBottomSheet);
       showModalBtn.addEventListener("click", showBottomSheet);
       closeBtn.addEventListener("click", hideBottomSheet);
+      // Back button
+      const backBtn = bottomSheet.querySelector(".back-btn");
+backBtn.addEventListener("click", hideBottomSheet);
     </script>
        <!-- CONTACT SECTION -->
       <section id="contact">
@@ -1024,10 +1026,6 @@
         // This would typically handle responsive image loading
         // For now, we're using CSS for responsiveness
       });
-
-      const backBtn = bottomSheet.querySelector(".back-btn");
-backBtn.addEventListener("click", hideBottomSheet);
-
     </script>
      </main>
   </body>

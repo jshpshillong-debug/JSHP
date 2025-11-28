@@ -696,7 +696,7 @@
       const showBottomSheet = () => {
         bottomSheet.classList.add("show");
         document.body.style.overflowY = "hidden";
-        updateSheetHeight(92);
+        updateSheetHeight(60);
       };
 
       const updateSheetHeight = (height) => {
@@ -730,7 +730,7 @@
         sheetHeight < 25
           ? hideBottomSheet()
           : sheetHeight > 75
-          ? updateSheetHeight(60)
+          ? updateSheetHeight(93)
           : updateSheetHeight(50);
       };
 

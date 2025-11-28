@@ -25,9 +25,9 @@
         <nav class="nav-links" id="navLinks">
           <a href="#home" class="active">🏠 Home</a>
           <a href="#about">📖 About JSHP</a>
-          <a href="Notification/Main Notification.html">📅 Notifications</a>
-          <a href="#videos">🎬 Videos</a>
           <a href="OfficialGallery/gallery.html">📷 Gallery</a>
+          <a href="#videos">🎬 Videos</a>
+          <a href="Notification/Main Notification.html">📅 Notifications</a>
           <a href="#contact">☎️ Contact</a>
         </nav>
         <button
@@ -64,27 +64,42 @@
       <div class="reader">
         <h1>Shaphang Ka Jingiaseng Samla Hynniew Presbytery</h1>
         <div class="about">
-          <p>
-            Ka Jingïaseng Samla Hynñiew presbytery ka kynthup ïa ki Samla, ki
-            hep barit bad ki long kmie ki longkpa kiba na kitei ki Hynñiew
-            Presbytery kiba shong ba sah hangne ha sor shillong. Ha shuwa jong u
-            snem 1993, ka ju long ka rukom ba ki Samla kiba dei na ki thain kiba
-            hap hapoh ki Hynñiew tylli ki Presbytery kiba mynta, kiba don ka
-            mynsiem ban sngew nongwei ban leit sha ki Jingïaseng ha ki Balang
-            hangne ha sor Shillong ha ki sngi U Blei. Kumta, ka pynlong ïa ki
-            ban byrngia ha ki wei kwei ki kam ha ki janmiet Sngi U Trai, kum ka
-            jingleit shangkai sha ki jaka iew bad kiwei kiwei ki jaka kiba ialam
-            ïa ki sha shibun ki jing pynnshoi, bad ba kin jngai na U Blei.
-            Kumta, da ka jingiohi jngai jong ki katto katne ki rangbah bad ki
-            Samla, ki la seng ïa kane ka jiniaseng Samla, ka pynia kynduh lang
-            iaki Samla na ki thain hapoh ki Hynñiew tylli ki presbytery kiba
-            mynta ba kin ioh ban iatei ha ka jinlong ba kynja mynsiem bad ioh
-            ruh shibun ki jinghikai na ka Ktien U Blei, ban duwai, bad ban sam
-            ïa ka ktien jong U bad ban pynshlur ïa ki kumno ban shakri ïa ka kam
-            U Kynrad ha kiba bun ki bynta.
-          </p>
+          <p class="animate-paragraph" id="typeText">
+        <span id="typedContent"></span><span class="cursor" id="cursor"></span>
+      </p>
         </div>
       </div>
+      <script>
+      const text = `Ka Jingïaseng Samla Hynñiew presbytery ka kynthup ïa ki Samla, ki hep barit bad ki long kmie ki longkpa kiba na kitei ki Hynñiew Presbytery kiba shong ba sah hangne ha sor shillong. Ha shuwa jong u snem 1993, ka ju long ka rukom ba ki Samla kiba dei na ki thain kiba hap hapoh ki Hynñiew tylli ki Presbytery kiba mynta, kiba don ka mynsiem ban sngew nongwei ban leit sha ki Jingïaseng ha ki Balang hangne ha sor Shillong ha ki sngi U Blei. Kumta, ka pynlong ïa ki ban byrngia ha ki wei kwei ki kam ha ki janmiet Sngi U Trai, kum ka jingleit shangkai sha ki jaka iew bad kiwei kiwei ki jaka kiba ialam ïa ki sha shibun ki jing pynnshoi, bad ba kin jngai na U Blei. Kumta, da ka jingiohi jngai jong ki katto katne ki rangbah bad ki Samla, ki la seng ïa kane ka jiniaseng Samla, ka pynia kynduh lang iaki Samla na ki thain hapoh ki Hynñiew tylli ki presbytery kiba mynta ba kin ioh ban iatei ha ka jinlong ba kynja mynsiem bad ioh ruh shibun ki jinghikai na ka Ktien U Blei, ban duwai, bad ban sam ïa ka ktien jong U bad ban pynshlur ïa ki kumno ban shakri ïa ka kam U Kynrad ha kiba bun ki bynta.`;
+
+      const target = document.getElementById("typedContent");
+      const cursor = document.getElementById("cursor");
+      let index = 0;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              observer.disconnect();
+              typeEffect();
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+
+      observer.observe(document.getElementById("typeText"));
+
+      function typeEffect() {
+        if (index < text.length) {
+          target.textContent += text.charAt(index);
+          index++;
+          setTimeout(typeEffect, 25); // typing speed
+        } else {
+          cursor.style.display = "none";
+        }
+      }
+    </script>
 
       <button class="show-modal">History</button>
 
@@ -321,6 +336,7 @@
         </p>
 
         </div>
+        <button class="back-btn">Back</button>
       </div> 
 
             <div class="header">
@@ -347,6 +363,28 @@
      #about .show-modal {
   display: block;
   margin: 20px auto;   /* ✅ Centers the button horizontally */
+}
+.back-btn {
+  display: block;
+  margin: 20px auto 10px auto;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  background: linear-gradient(180deg, #00b6c7, #008a97);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.back-btn:active {
+  transform: translateY(1px);
+}
+
+.back-btn:hover {
+  box-shadow: 0 25px 30px rgba(0, 136, 150, 0.16);
+  background: linear-gradient(180deg, #30939c, #017681);
 }
 
 
@@ -406,7 +444,7 @@
         width: 100%;
         position: relative;
         background: #fff;
-        max-height: 100vh;
+        max-height: 93vh;
         height: 50vh;
         max-width: 1150px;
         padding: 25px 30px;
@@ -443,7 +481,7 @@
 
       .header .drag-icon span {
         height: 4px;
-        width: 40px;
+        width: 100px;
         display: block;
         background: #c7d0e1;
         border-radius: 50px;
@@ -456,11 +494,11 @@
         scrollbar-width: none;
       }
 
-      .bottom-sheet .container-history::-webkit-scrollbar {
-        width: 0;
-      }
-
-      .bottom-sheet .container-history h2 {
+    /* Hide scrollbar in WebKit browsers for the "comment" element */
+.bottom-sheet .container-history::-webkit-scrollbar {
+  width: 0px;
+}
+         .bottom-sheet .container-history h2 {
         font-size: 1.8rem;
         text-align: center;
       }
@@ -481,22 +519,8 @@
         cursor: pointer;
         color: #036254;
         transition: 0.2s;
+        z-index: 9999;    
       }
-      /* ✅ Always keep close button visible on mobile */
-.bottom-sheet .close-btn {
-  position: fixed;          /* instead of absolute */
-  top: 18px;
-  right: 18px;
-  z-index: 9999;            /* stays above all content */
-  background: rgba(255,255,255,0.95);
-  border-radius: 50%;
-  width: 42px;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 
       .close-btn:hover {
         color: #000;
@@ -709,13 +733,17 @@
         startHeight;
 
       const showBottomSheet = () => {
-      bottomSheet.classList.add("show");
-      document.body.style.overflowY = "hidden";
-      updateSheetHeight(93);
+  bottomSheet.classList.add("show");
+  // ✅ Allow outside (page) scrollbar
+  document.body.style.overflowY = "auto";
+  updateSheetHeight(93);
 
-  // ✅ force close button visibility every time
-      closeBtn.style.display = "flex";
-      };
+  // ✅ Force close button visible
+  closeBtn.style.display = "block";
+  closeBtn.style.opacity = "1";
+  closeBtn.style.pointerEvents = "auto";
+};
+
 
 
       const updateSheetHeight = (height) => {
@@ -765,13 +793,6 @@
       showModalBtn.addEventListener("click", showBottomSheet);
       closeBtn.addEventListener("click", hideBottomSheet);
     </script>
-      <!---Notification-->
-   <!-- Notifications Section -->
-
-
-      <section id="gallery"></section>
-
-       <!-- CONTACT SECTION -->
        <!-- CONTACT SECTION -->
       <section id="contact">
         <h2 class="section-title">Contact Us</h2>
@@ -960,20 +981,28 @@
       });
 
       // Active navigation based on scroll position
-      window.addEventListener("scroll", () => {
-        let fromTop = window.scrollY + 150;
-        links.forEach((link) => {
-          const section = document.querySelector(link.getAttribute("href"));
-          if (
-            section &&
-            section.offsetTop <= fromTop &&
-            section.offsetTop + section.offsetHeight > fromTop
-          ) {
-            links.forEach((l) => l.classList.remove("active"));
-            link.classList.add("active");
-          }
-        });
-      });
+      // Active navigation based on scroll position (FIXED)
+  window.addEventListener("scroll", () => {
+    let fromTop = window.scrollY + 150;
+
+    links.forEach((link) => {
+      const href = link.getAttribute("href");
+
+      // ✅ Only run for internal section links
+      if (!href.startsWith("#")) return;
+
+      const section = document.querySelector(href);
+      if (!section) return;
+
+      if (
+        section.offsetTop <= fromTop &&
+        section.offsetTop + section.offsetHeight > fromTop
+      ) {
+        links.forEach((l) => l.classList.remove("active"));
+        link.classList.add("active");
+      }
+    });
+  });
 
 
       // Smooth scrolling for anchor links
@@ -995,6 +1024,10 @@
         // This would typically handle responsive image loading
         // For now, we're using CSS for responsiveness
       });
+
+      const backBtn = bottomSheet.querySelector(".back-btn");
+backBtn.addEventListener("click", hideBottomSheet);
+
     </script>
      </main>
   </body>

@@ -545,7 +545,7 @@
           "Check out this photo from JSHP Gallery!"
         );
 
-        // ✅ Native mobile share
+        // ✅ Native mobile share (Quick Share / Nearby / Bluetooth)
         if (navigator.share && location.protocol === "https:") {
           navigator
             .share({
@@ -558,16 +558,46 @@
         }
 
         // ✅ Fallback for desktop or non-supporting browsers
-        // Create a small popup with share options
         const shareHtml = `
-    <div style="text-align:center;padding:20px;font-family:sans-serif;">
-      <h3>Share this image</h3>
-      <a href="https://wa.me/?text=${text}%20${encodedUrl}" target="_blank" style="margin:5px;padding:8px 12px;background:#25D366;color:white;border-radius:6px;text-decoration:none;">WhatsApp</a>
-      <a href="https://t.me/share/url?url=${encodedUrl}&text=${text}" target="_blank" style="margin:5px;padding:8px 12px;background:#0088cc;color:white;border-radius:6px;text-decoration:none;">Telegram</a>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}" target="_blank" style="margin:5px;padding:8px 12px;background:#4267B2;color:white;border-radius:6px;text-decoration:none;">Facebook</a>
+    <div style="
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      font-family:sans-serif;
+      max-width:90vw;
+      box-sizing:border-box;
+    ">
+      <h3 style="margin-bottom:20px;color:#333;text-align:center;">Share this image</h3>
+
+      <div style="
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:10px;
+        width:100%;
+      ">
+        <a href="https://wa.me/?text=${text}%20${encodedUrl}" target="_blank"
+          style="flex:1 1 40%;padding:10px;text-align:center;background:#25D366;color:#fff;border-radius:8px;text-decoration:none;font-weight:bold;">WhatsApp</a>
+
+        <a href="https://t.me/share/url?url=${encodedUrl}&text=${text}" target="_blank"
+          style="flex:1 1 40%;padding:10px;text-align:center;background:#0088cc;color:#fff;border-radius:8px;text-decoration:none;font-weight:bold;">Telegram</a>
+
+        <a href="https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}" target="_blank"
+          style="flex:1 1 40%;padding:10px;text-align:center;background:#4267B2;color:#fff;border-radius:8px;text-decoration:none;font-weight:bold;">Facebook</a>
+
+        <a href="https://www.instagram.com/" target="_blank"
+          style="flex:1 1 40%;padding:10px;text-align:center;background:#E4405F;color:#fff;border-radius:8px;text-decoration:none;font-weight:bold;">Instagram</a>
+      </div>
+
+      <p style="margin-top:15px;color:#555;font-size:14px;text-align:center;">
+        For Bluetooth / Nearby Share, open this page on mobile and use Quick Share.
+      </p>
     </div>
   `;
-        const shareWindow = window.open("", "Share", "width=400,height=300");
+
+        const shareWindow = window.open("", "Share", "width=400,height=450");
         shareWindow.document.write(shareHtml);
         shareWindow.document.close();
       }

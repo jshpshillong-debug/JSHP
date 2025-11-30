@@ -20,15 +20,11 @@
         <div><img src="img/JSHP Emblem.png" class="logo" alt="logo" /></div>
 
         <nav class="nav-links" id="navLinks">
-          <a href="../JSHP Website official/main/deepseek.html" class=""
-            >🏠Home</a
-          >
-          <a href="#about">📖About JSHP</a>
-          <a href="../Video/video page 1.html">🎬Videos</a>
-          <a href="../Notification/Main Notification.html"
-            >📅Notification</a
-          >
+          <a href="../index.html" class="">🏠Home</a>
+          <a href="../index.html#about">📖About JSHP</a>
           <a href="#gallery-section" class="active">📸Gallery</a>
+          <a href="../Video/video page 1.html">🎬Videos</a>
+          <a href="../Notification/Main Notification.html">📅Notification</a>
           <a href="#contact">☎️Contact</a>
         </nav>
         <button
@@ -517,10 +513,19 @@
         });
       });
 
+      // Active navigation based on scroll position (FIXED)
       window.addEventListener("scroll", () => {
         let fromTop = window.scrollY + 150;
+
         links.forEach((link) => {
-          const section = document.querySelector(link.getAttribute("href"));
+          const href = link.getAttribute("href");
+
+          // ✅ Only run for internal section links
+          if (!href.startsWith("#")) return;
+
+          const section = document.querySelector(href);
+          if (!section) return;
+
           if (
             section.offsetTop <= fromTop &&
             section.offsetTop + section.offsetHeight > fromTop
@@ -532,6 +537,40 @@
       });
 
       // Programme PDF viewer logic
+
+      // Share image function
+      function shareImage(imageUrl, imageName) {
+        const encodedUrl = encodeURIComponent(imageUrl);
+        const text = encodeURIComponent(
+          "Check out this photo from JSHP Gallery!"
+        );
+
+        // ✅ Native mobile share
+        if (navigator.share && location.protocol === "https:") {
+          navigator
+            .share({
+              title: imageName || "JSHP Photo",
+              text: text,
+              url: imageUrl,
+            })
+            .catch((err) => console.log("Share failed:", err));
+          return;
+        }
+
+        // ✅ Fallback for desktop or non-supporting browsers
+        // Create a small popup with share options
+        const shareHtml = `
+    <div style="text-align:center;padding:20px;font-family:sans-serif;">
+      <h3>Share this image</h3>
+      <a href="https://wa.me/?text=${text}%20${encodedUrl}" target="_blank" style="margin:5px;padding:8px 12px;background:#25D366;color:white;border-radius:6px;text-decoration:none;">WhatsApp</a>
+      <a href="https://t.me/share/url?url=${encodedUrl}&text=${text}" target="_blank" style="margin:5px;padding:8px 12px;background:#0088cc;color:white;border-radius:6px;text-decoration:none;">Telegram</a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}" target="_blank" style="margin:5px;padding:8px 12px;background:#4267B2;color:white;border-radius:6px;text-decoration:none;">Facebook</a>
+    </div>
+  `;
+        const shareWindow = window.open("", "Share", "width=400,height=300");
+        shareWindow.document.write(shareHtml);
+        shareWindow.document.close();
+      }
     </script>
   </body>
 </html>

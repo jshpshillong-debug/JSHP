@@ -391,7 +391,7 @@
 
       let images = [];
       let currentIndex = 0;
-      let visibleCount = 20;
+      const batchSize = 20;
 
       async function fetchImages() {
         try {
@@ -403,35 +403,29 @@
           const res = await fetch(url);
           const data = await res.json();
 
-          return (data.files || []).sort(
+          images = (data.files || []).sort(
             (a, b) => new Date(b.createdTime) - new Date(a.createdTime)
           );
+
+          renderNextBatch();
         } catch {
           gallery.innerHTML =
             "<p style='text-align:center;color:red;'>Failed to load</p>";
-          return [];
         }
       }
 
-      function renderGallery(files, append = false) {
-        images = files.map((f) => ({
-          id: f.id,
-          name: f.name,
-          src: `https://lh3.googleusercontent.com/d/${f.id}=w2000`,
-          date: f.createdTime,
-        }));
-
-        if (!append) gallery.innerHTML = "";
-
-        const slice = images.slice(0, visibleCount);
+      function renderNextBatch() {
+        const slice = images.slice(currentIndex, currentIndex + batchSize);
 
         slice.forEach((file, i) => {
+          const index = currentIndex + i;
+
           const item = document.createElement("div");
           item.className = "gallery-item";
 
           const img = document.createElement("img");
-          img.src = file.src.replace("w2000", "w800");
-          img.dataset.index = i;
+          img.src = `https://lh3.googleusercontent.com/d/${file.id}=w800`;
+          img.dataset.index = index;
 
           const downloadBtn = document.createElement("a");
           downloadBtn.className = "hover-btn download-btn";
@@ -442,7 +436,11 @@
           const shareBtn = document.createElement("button");
           shareBtn.className = "hover-btn share-btn";
           shareBtn.innerHTML = '<i class="fas fa-share-alt"></i>';
-          shareBtn.onclick = () => shareImage(file.src, file.name);
+          shareBtn.onclick = () =>
+            shareImage(
+              `https://lh3.googleusercontent.com/d/${file.id}=w2000`,
+              file.name
+            );
 
           const mobileButtons = document.createElement("div");
           mobileButtons.className = "mobile-buttons";
@@ -455,7 +453,11 @@
           const mShare = document.createElement("button");
           mShare.className = "mobile-btn";
           mShare.innerHTML = '<i class="fas fa-share-alt"></i>';
-          mShare.onclick = () => shareImage(file.src, file.name);
+          mShare.onclick = () =>
+            shareImage(
+              `https://lh3.googleusercontent.com/d/${file.id}=w2000`,
+              file.name
+            );
 
           mobileButtons.appendChild(mDown);
           mobileButtons.appendChild(mShare);
@@ -468,20 +470,22 @@
 
           img.addEventListener("click", () => {
             if (window.innerWidth <= 768) return;
-            openModal(i);
+            openModal(index);
           });
         });
 
-        if (visibleCount >= images.length) {
+        currentIndex += batchSize;
+
+        if (currentIndex >= images.length) {
           loadMoreBtn.style.display = "none";
         }
       }
 
-      loadMoreBtn.addEventListener("click", () => {
-        visibleCount += 20;
-        renderGallery(images, true);
-      });
+      loadMoreBtn.addEventListener("click", renderNextBatch);
 
+      fetchImages();
+    </script>
+    <script>
       fetchImages().then((files) => {
         images = files.map((f) => ({
           id: f.id,

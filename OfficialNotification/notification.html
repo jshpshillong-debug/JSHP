@@ -253,8 +253,9 @@
       }
 
       /* PDF ICON BUTTON */
-      .pdf-btn {
-        color: rgb(115, 177, 244);
+     .pdf-btn {
+        background: linear-gradient(180deg, #00b6c7, #008a97);
+        color: #fff;
         font-size: 20px;
         padding: 10px 14px;
         border-radius: 10px;
@@ -263,10 +264,11 @@
         align-items: center;
         justify-content: center;
         transition: 0.3s;
+        white-space: nowrap;
       }
 
       .pdf-btn:hover {
-        background: #13abf2;
+        background: linear-gradient(180deg, #30939c, #017681);
       }
 
       /* MOBILE FRIENDLY */
@@ -680,7 +682,7 @@
                 <div class="notif-date">${date}</div>
               </div>
 
-              <a href="${pdf}" target="_blank" class="pdf-btn">📄</a>
+              <a href="${pdf}" target="_blank" class="pdf-btn">📄PDF</a>
             </div>
           `;
               });

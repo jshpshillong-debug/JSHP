@@ -503,16 +503,6 @@ body{
         width: 0;
       }
 
-      .bottom-sheet .container-history .heading {
-        font-size: 2rem;
-        text-align: center;
-      }
-
-      .bottom-sheet .container-history p {
-        margin-top: 20px;
-        font-size: 1.05rem;
-      }
-
       .close-btn {
         position: absolute;
         right: 15px;

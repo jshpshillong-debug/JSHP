@@ -557,21 +557,6 @@ body{
           }
         }
 
-
-
-  /*---footer---*/
- .footer{
-    background-color: #021f2b;
-    background-size: cover;
-    background-position: center;
- }
- .footer h4{
-    text-align: center;
-    margin: 0;
-    padding: .5rem 0;
-    color: floralwhite;
- }
-
 #loadMoreBtn {
          display: inline-block;
           width: 10%;
@@ -624,4 +609,5 @@ body{
     cursor: pointer;
     font-size: 20px;      /* larger text */
     
+
 }

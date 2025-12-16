@@ -550,18 +550,69 @@
           padding: 12px;
         }
       }
-      /*--footer--*/
-      #footer {
-        background-color: #292333;
-        background-size: cover;
-        background-position: center;
-      }
-      #footer h4 {
-        text-align: center;
-        margin: 0;
-        padding: 0.3rem 0;
-        color: floralwhite;
-      }
+     /*---footer---*/
+.modern-footer {
+  background: linear-gradient(145deg, #021f2b, #043b4f);
+  padding: 0.9rem 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-wrap {
+  max-width: 1200px;
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: #eaf6f7;
+}
+
+/* Copyright */
+.footer-copy {
+  font-size: 0.8rem;
+  color: #ffffff;
+}
+
+/* Developer — single line */
+.footer-dev {
+  font-size: 0.7rem;
+  color: #c9f3f4;
+  text-align: center;
+  white-space: nowrap;      /* KEY */
+}
+
+.footer-dev span {
+  display: inline;
+  
+}
+
+.footer-dev strong {
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0.3rem;
+}
+
+.footer-dev em {
+   color: #ffffff;
+  font-style: normal;
+  opacity: 0.85;
+  margin-left: 0.3rem;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .footer-wrap {
+    flex-direction: column;
+    gap: 0.4rem;
+    text-align: center;
+  }
+
+  .footer-dev {
+    white-space: normal;    /* allow wrap on small screens */
+  }
+}
+
     </style>
   </head>
   <body>

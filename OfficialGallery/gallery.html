@@ -25,7 +25,20 @@
     />
 
     <meta name="robots" content="index, follow" />
-    <title>J.S.H.P. Gallery</title>
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="JSHP Shillong" />
+    <meta property="og:title" content="JSHP Photo Gallery" />
+    <meta
+      property="og:description"
+      content="Official photo from JSHP Shillong Gallery"
+    />
+    <meta property="og:image" content="" />
+
+    <!-- WhatsApp / Facebook -->
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <title>JSHP SHILLONG</title>
     <link rel="icon" href="img/emblemicon.ico" />
     <link rel="icon" href="img/emblemicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="img/emblemicon.ico" type="image/x-icon" />
@@ -199,7 +212,7 @@
     <header class="navbar">
       <div class="container">
         <div>
-          <a href="/#home"><img src="img/JSHP-Emblem.png" class="logo" alt="JSHP Emblem" ></a>
+          <img src="img/JSHP-Emblem.png" class="logo" alt="JSHP Emblem" />
         </div>
 
         <nav class="nav-links" id="navLinks">
@@ -225,7 +238,7 @@
     <!-- GALLERY -->
     <main>
       <section id="gallery-section">
-        <h1>J.S.H.P Gallery</h1>
+        <h1>J.S.H.P Photo Gallery</h1>
 
         <div class="gallery" id="gallery"></div>
 
@@ -350,18 +363,6 @@
         </div>
       </section>
     </main>
-    <!-- Footer -->
-    <footer class="modern-footer">
-  <div class="footer-wrap">
-    <div class="footer-copy">
-      © 2025 JSHP Shillong
-      All rights reserved.
-    </div>
-<div class="footer-dev">
-      <span>Designed & Developed by<strong>Shanborlang Syiem Phyllut</strong> <br> <em>(Ex-General Secretary JSHP Shillong)</em></span>
-    </div>
-  </div>
-</footer>
 
     <!-- EmailJS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
@@ -420,6 +421,10 @@
           });
       });
     </script>
+    <!-- Footer -->
+    <section class="footer">
+      <h4>Copyright &copy; 2025 JSHP Shillong. All rights reserved.</h4>
+    </section>
     <!-- SCRIPTS -->
     <script>
       const API_KEY = "AIzaSyDtpds40pfDlP5APglwnUGOBz4am2mTOJ4";
@@ -430,7 +435,7 @@
 
       let images = [];
       let currentIndex = 0;
-      const batchSize = 20;
+      const batchSize = 25;
 
       async function fetchImages() {
         try {
@@ -547,6 +552,7 @@
         const file = images[currentImageIndex];
         const imageUrl = `https://lh3.googleusercontent.com/d/${file.id}=w2000`;
         modalImg.src = imageUrl;
+
         // Set share + download
         modalShare.onclick = () => shareImage(imageUrl, file.name);
         modalDownload.onclick = () => downloadImage(file.id, file.name);
@@ -636,11 +642,16 @@
           navigator
             .share({
               title: imageName || "JSHP Photo",
-              text: text,
+              text: "Check out this photo from JSHP Gallery!",
               url: imageUrl,
             })
             .catch((err) => console.log("Share failed:", err));
           return;
+
+          window.open(
+            `https://wa.me/?text=${encodeURIComponent(shareUrl)}`,
+            "_blank"
+          );
         }
         // ✅ Fallback for desktop or non-supporting browsers
         const shareHtml = `
@@ -681,11 +692,24 @@
       </p>
     </div>
   `;
-
         const shareWindow = window.open("", "Share", "width=400,height=450");
         shareWindow.document.write(shareHtml);
         shareWindow.document.close();
       }
+    </script>
+    <script>
+      // If click is outside navLinks and menuToggle
+      document.addEventListener("click", (e) => {
+        const isMenuOpen = navLinks.classList.contains("open");
+
+        if (!isMenuOpen) return;
+
+        // If click is outside navLinks and menuToggle
+        if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+          navLinks.classList.remove("open");
+          menuToggle.classList.remove("active");
+        }
+      });
     </script>
   </body>
 </html>

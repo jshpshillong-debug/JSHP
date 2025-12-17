@@ -12,12 +12,8 @@ body{
     line-height:1.6;
         background: #f4f1ea;
         margin: 0;
-        max-width: 100%;
-      
-        
+        max-width: 100%; 
       }
-
-
 .navbar{
     position:sticky; 
     top:0;
@@ -31,13 +27,9 @@ body{
     max-width:90%;
     margin:auto;
     padding:0.8rem 1.5rem}
-
-
 .logo{
     width: 250px;
 }
-
-
 .nav-links{
     display:flex;
     gap:1.5rem;
@@ -56,7 +48,7 @@ body{
     bottom:0;
     width:0;
     height:2px;
-    background:#29bacd;
+    background: linear-gradient(145deg, #021f2b, #043b4f);
     transition:0.3s}
 .nav-links a:hover{
     color:#eaeaea}

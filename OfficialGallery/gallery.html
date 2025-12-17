@@ -442,9 +442,7 @@
           const res = await fetch(url);
           const data = await res.json();
 
-          images = (data.files || []).sort(
-            (a, b) => new Date(b.createdTime) - new Date(a.createdTime)
-          );
+          images = data.files || [];
 
           renderNextBatch();
         } catch {

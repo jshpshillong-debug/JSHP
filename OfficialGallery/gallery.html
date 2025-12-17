@@ -711,5 +711,35 @@
         }
       });
     </script>
+     <script>
+      function shareImage(imageUrl, imageName) {
+        const fileId = imageUrl.split("/d/")[1].split("=")[0];
+
+        // GitHub Pages safe base path
+        const basePath = location.pathname.replace(/\/[^/]*$/, "");
+
+        const shareUrl =
+          `${location.origin}${basePath}/share.html` +
+          `?img=${fileId}&name=${encodeURIComponent(imageName)}`;
+
+        // ✅ Mobile Native Share
+        if (navigator.share && location.protocol === "https:") {
+          navigator
+            .share({
+              title: imageName,
+              text: "JSHP Photo Gallery",
+              url: shareUrl,
+            })
+            .catch(() => {});
+          return;
+        }
+
+        // ✅ Desktop fallback
+        window.open(
+          `https://wa.me/?text=${encodeURIComponent(shareUrl)}`,
+          "_blank"
+        );
+      }
+    </script>
   </body>
 </html>

@@ -48,7 +48,7 @@ body{
     bottom:0;
     width:0;
     height:2px;
-    background: linear-gradient(145deg, #021f2b, #043b4f);
+    background:#29bacd;
     transition:0.3s}
 .nav-links a:hover{
     color:#eaeaea}

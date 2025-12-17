@@ -22,7 +22,7 @@ body{
     position:sticky; 
     top:0;
     z-index:100;
-    background:#161b22;
+    background: linear-gradient(145deg, #021f2b, #043b4f);
     box-shadow:0 2px 8px rgba(0,0,0,0.4)}
 .container{
     display:flex;
@@ -94,12 +94,12 @@ body{
     top:62px;
     left:0;
     width:100%;
-    background:rgba(22, 27, 34, 0.9);
+    background: linear-gradient(145deg, #021f2b, #043b4f);
     flex-direction:column;
     align-items:center;
     max-height:0;
     overflow:hidden;
-    border-top:1px solid rgba(255,255,255,0.1)}
+    border-top:1.5px solid rgb(4, 91, 98);}
 .nav-links.open{
     max-height:480px;
     padding:1rem 0}

@@ -1260,6 +1260,20 @@ document.getElementById("date-display").innerHTML =
     `Today is the ${day}<sup>${suffix}</sup> of ${today.toLocaleString('default', { month: 'long' })}`;
 
       </script>
+      <script>
+      // If click is outside navLinks and menuToggle
+      document.addEventListener("click", (e) => {
+        const isMenuOpen = navLinks.classList.contains("open");
+
+        if (!isMenuOpen) return;
+
+        // If click is outside navLinks and menuToggle
+        if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+          navLinks.classList.remove("open");
+          menuToggle.classList.remove("active");
+        }
+      });
+    </script>
     </main>
      <footer class="modern-footer">
   <div class="footer-wrap">

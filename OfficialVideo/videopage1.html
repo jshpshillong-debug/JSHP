@@ -463,6 +463,20 @@
           // For now, we're using CSS for responsiveness
         });
       </script>
+      <script>
+      // If click is outside navLinks and menuToggle
+      document.addEventListener("click", (e) => {
+        const isMenuOpen = navLinks.classList.contains("open");
+
+        if (!isMenuOpen) return;
+
+        // If click is outside navLinks and menuToggle
+        if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+          navLinks.classList.remove("open");
+          menuToggle.classList.remove("active");
+        }
+      });
+    </script>
     </main>
     <footer id="footer">
       <h4>Copyright &copy; 2025 JSHP Shillong. All rights reserved.</h4>

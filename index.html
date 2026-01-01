@@ -784,36 +784,55 @@ ka thong kaba long ka jingpynim jong U Trai jong ngi U Jisu Khrist.</p>
           </div>
         </section>
       </section>
-
-      <script>
+ <script>
         const showModalBtn = document.querySelector(".show-modal");
         const bottomSheet = document.querySelector(".bottom-sheet");
         const sheetOverlay = bottomSheet.querySelector(".sheet-overlay");
         const sheetContent = bottomSheet.querySelector(".content");
         const dragIcon = bottomSheet.querySelector(".drag-icon");
         const closeBtn = bottomSheet.querySelector(".close-btn");
+        const backBtn = bottomSheet.querySelector(".back-btn");
 
         let isDragging = false,
           startY,
           startHeight;
 
-        const showBottomSheet = () => {
-          bottomSheet.classList.add("show");
-          document.body.style.overflowY = "hidden";
-          updateSheetHeight(93);
-
-          // ✅ force close button visibility every time
-          closeBtn.style.display = "flex";
-        };
+        // ✅ history flag
+        let modalHistoryPushed = false;
 
         const updateSheetHeight = (height) => {
           sheetContent.style.height = `${height}vh`;
           bottomSheet.classList.toggle("fullscreen", height === 93);
         };
 
+        const showBottomSheet = () => {
+          bottomSheet.classList.add("show");
+          document.body.style.overflowY = "hidden";
+          updateSheetHeight(93);
+
+          // force close button visibility
+          closeBtn.style.display = "flex";
+
+          // ✅ push browser history
+          if (!modalHistoryPushed) {
+            history.pushState({ bottomSheet: true }, "", "#history");
+            modalHistoryPushed = true;
+          }
+        };
+
         const hideBottomSheet = () => {
           bottomSheet.classList.remove("show");
           document.body.style.overflowY = "auto";
+          updateSheetHeight(0);
+
+          // reset close button visibility
+          closeBtn.style.display = "";
+
+          // ✅ pop browser history
+          if (modalHistoryPushed) {
+            history.back();
+            modalHistoryPushed = false;
+          }
         };
 
         const dragStart = (e) => {
@@ -841,20 +860,32 @@ ka thong kaba long ka jingpynim jong U Trai jong ngi U Jisu Khrist.</p>
             : updateSheetHeight(50);
         };
 
-        //dragIcon.addEventListener("mousedown", dragStart);
-        //document.addEventListener("mousemove", dragging);
+        // (drag listeners are intentionally commented as in your original)
+        // dragIcon.addEventListener("mousedown", dragStart);
+        // document.addEventListener("mousemove", dragging);
         // document.addEventListener("mouseup", dragStop);
 
-        //dragIcon.addEventListener("touchstart", dragStart);
-        //document.addEventListener("touchmove", dragging);
-        //document.addEventListener("touchend", dragStop);
+        // dragIcon.addEventListener("touchstart", dragStart);
+        // document.addEventListener("touchmove", dragging);
+        // document.addEventListener("touchend", dragStop);
 
+        // UI controls
         sheetOverlay.addEventListener("click", hideBottomSheet);
         showModalBtn.addEventListener("click", showBottomSheet);
         closeBtn.addEventListener("click", hideBottomSheet);
-        // Back button
-        const backBtn = bottomSheet.querySelector(".back-btn");
         backBtn.addEventListener("click", hideBottomSheet);
+
+        // ✅ browser BACK button handler
+        window.addEventListener("popstate", (event) => {
+          if (modalHistoryPushed) {
+            hideBottomSheet();
+          }
+        });
+
+        // ✅ optional: open sheet if URL already has #history
+        if (location.hash === "#history") {
+          showBottomSheet();
+        }
       </script>
       <!--Gallery Section-->
       <section id="gallery">

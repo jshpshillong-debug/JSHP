@@ -1,4 +1,4 @@
- fetch("about_section.html")
+ fetch("https://jshp.online/main/about_section.html")
     .then(response => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -12,4 +12,5 @@
       console.error("About section load error:", error);
       document.getElementById("aboutContent").innerHTML =
         "<p>Unable to load About section.</p>";
+
     });

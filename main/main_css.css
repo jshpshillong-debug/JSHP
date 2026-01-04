@@ -110,7 +110,7 @@ body{
             rgba(0, 0, 0, 0.5),
             rgba(0, 0, 0, 0.5)
           ),
-          url("https://jshp.online/OfficialMainIndex/img/bg-main.jpg");
+          url("https://jshp.online/main/img/bg-main.jpg");
         background-size: cover;
         background-position: center;
         display: flex;
@@ -547,7 +547,7 @@ body{
             rgba(255, 255, 255, 0.858),
             rgba(255, 255, 255, 0.858)
           ),
-          url("https://jshp.online/OfficialMainIndex/img/notf5.jpg");
+          url("https://jshp.online/main/img/notf5.jpg");
             background-size: cover;
         background-position: center;
         margin: 0;
@@ -680,7 +680,7 @@ body{
             rgba(0, 0, 0, 0.1),
             rgba(0, 0, 0, 0.1)
           ),
-          url("https://jshp.online/OfficialMainIndex/img/bgv3.jpg");
+          url("https://jshp.online/main/img/bgv3.jpg");
             background-size: cover;
         background-position: center;
         margin: 0;
@@ -811,7 +811,7 @@ body{
             rgba(0, 0, 0, 0.7),
             rgba(0, 0, 0, 0.7)
           ),
-          url("https://jshp.online/OfficialMainIndex/img/cont5.jpg");
+          url("https://jshp.online/main/img/cont5.jpg");
            min-height: 100vh; 
           padding: 56px 18px;
           background-size: cover;

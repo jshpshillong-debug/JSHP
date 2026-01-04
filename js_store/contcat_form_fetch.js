@@ -1,4 +1,4 @@
-fetch("contact_form.html")
+fetch("https://jshp.online/main/contact_form.html")
     .then(response => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -12,4 +12,5 @@ fetch("contact_form.html")
       console.error("Contact section load error:", error);
       document.getElementById("contact_form").innerHTML =
         "<p>Unable to load Contact section.</p>";
+
     });

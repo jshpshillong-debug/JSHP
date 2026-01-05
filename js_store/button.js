@@ -1,6 +1,6 @@
  // JavaScript Navigation Links History
           document
-            .getElementById("his-tory")
+            .getElementById("full-history")
             .addEventListener("click", function () {
               window.location.href = "https://jshp.online/history.html";
             });

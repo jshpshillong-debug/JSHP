@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      History of Jingiaseng Samla Hynniew Presbytery Shillong (JSHP)
+    </title>
+    <link
+      rel="stylesheet"
+      href="https://jshp.online/main/navbar_contact_footer.css"
+    />
+
+    <link
+      rel="icon"
+      href="https://jshp.online/main/img/emblemicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      rel="shortcut icon"
+      href="https://jshp.online/main/img/emblemicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="history.css" />
+    <link rel="canonical" href="https://jshp.online/" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="container">
+        <div>
+          <a href="#home"
+            ><img
+              src="https://jshp.online/main/img/JSHP-Emblem.png"
+              class="logo"
+              alt="JSHP Shillong Logo"
+          /></a>
+        </div>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="https://jshp.online/#home">HOME</a>
+          <a href="https://jshp.online/#about">ABOUT JSHP</a>
+          <a href="OfficialGallery/gallery.html">GALLERY</a>
+          <a href="https://jshp.online/#video">VIDEO</a>
+          <a href="OfficialNotification/notification.html">NOTIFICATION</a>
+          <a href="#contact">CONTACT</a>
+        </nav>
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Toggle navigation"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section id="about">
+        <div class="container-history">
+          <div id="jshphistory">Loading History...</div>
+          <script src="jshphistory.js"></script>
+          <button class="back-btn" id="back-home">Back</button>
+        </div>
+        <script>
+          // JavaScript Navigation Links
+          document
+            .getElementById("back-home")
+            .addEventListener("click", function () {
+              window.location.href = "https://jshp.online/#about";
+            });
+        </script>
+      </section>
+
+      <!-- CONTACT SECTION -->
+      <section id="contact">
+        <div id="contact_form">Loading Contact...</div>
+        <script src="https://jshp.online/js_store/contcat_form_fetch.js"></script>
+      </section>
+      <!-- EmailJS CDN -->
+      <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+      <script src="contact_form_email.js"></script>
+      <!-- END CONTACT SECTION -->
+      <script src="https://jshp.online/js_store/MenuToggle.js"></script>
+      <script src="https://jshp.online/js_store/date_th_nd_st.js"></script>
+    </main>
+    <footer class="modern-footer">
+      <div id="footer_section">Footer</div>
+      <script src="https://jshp.online/js_store/footer_script.js"></script>
+    </footer>
+  </body>
+</html>

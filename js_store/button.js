@@ -2,7 +2,7 @@
           document
             .getElementById("full-history")
             .addEventListener("click", function () {
-              window.location.href = "https://jshp.online/history.html";
+              window.location.href = "https://jshp.online/main/history/history.html";
             });
             // JavaScript Navigation Links View Gallery
       document.getElementById("viewgallery").addEventListener("click", function () {
@@ -12,3 +12,4 @@
       document.getElementById("allvideo").addEventListener("click", function () {
         window.location.href = "https://jshp.online/OfficialVideo/videomain.html";
       });
+

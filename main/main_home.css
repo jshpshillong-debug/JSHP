@@ -91,6 +91,17 @@
         margin-top: 3px;
         text-align: center;
       }
+            #home {
+    min-height: 60vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://jshp.online/main/img/bg-main.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
       }
        /* About Section */
       /* =================================

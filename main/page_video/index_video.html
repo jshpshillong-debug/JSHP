@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Official website of Jingiaseng Samla Hynniew Presbytery Shillong."
+    />
+    <meta
+      name="keywords"
+      content="JSHP, JSHP Shillong, Jingiaseng Samla, 7 Presbytery, hynniew presbytery"
+    />
+
+    <meta
+      name="author"
+      content="JSHP Shillong, jshp shillong, hynniew presbytery, jshp, jingiaseng samla"
+    />
+
+    <meta name="robots" content="index, follow" />
+    <title>Jingiaseng Samla Hynniew Presbytery Shillong</title>
+    <link
+      rel="stylesheet"
+      href="https://jshp.online/main/navbar_contact_footer.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      href="https://jshp.online/main/img/emblemicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      rel="shortcut icon"
+      href="https://jshp.online/main/img/emblemicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="container">
+        <div>
+          <img
+            src="https://jshp.online/main/img/JSHP-Emblem.png"
+            class="logo"
+            alt="JSHP Shillong Logo"
+          />
+        </div>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="/index.html">HOME</a>
+          <a href="/#about">ABOUT JSHP</a>
+          <a href="/OfficialGallery/gallery.html">GALLERY</a>
+          <a href="#video">VIDEOS</a>
+          <a href="/OfficialNotification/notification.html">NOTIFICATIONS</a>
+          <a href="#contact">CONTACT</a>
+        </nav>
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Toggle navigation"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section id="video">
+        <h1>🎥 JSHP Official YouTube Videos</h1>
+        <div id="jshpvideo">Loading History...</div>
+        <!-- Navigation Buttons -->
+        <div class="buttons">
+          <button class="btn-more" id="loadMoreVideos">More Videos</button>
+          <button class="btn-home" id="nextpage">Home</button>
+        </div>
+        <script>
+          // JavaScript Navigation Links
+          document
+            .getElementById("nextpage")
+            .addEventListener("click", function () {
+              window.location.href = "https://jshp.online/#video";
+            });
+        </script>
+      </section>
+
+      <!-- CONTACT SECTION -->
+      <section id="contact">
+        <h2 class="section-title">Contact Us</h2>
+
+        <div class="contact-container">
+          <!-- Contact Info -->
+          <!-- Contact Info -->
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon" aria-hidden="true">📍</div>
+              <div class="contact-details">
+                <h4>Address</h4>
+                <label>
+                  Mawkhar Mission Compound<br />
+                  East Khasi Hills - 793002<br />
+                  Shillong, Meghalaya
+                </label>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <a href="tel:+917005830409"
+                ><div class="contact-icon" aria-hidden="true">📞</div></a
+              >
+
+              <div class="contact-details">
+                <h4>Phone</h4>
+                <label>
+                  <a href="tel:+917005830409">+91 70058 30409</a>
+                </label>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <a href="mailto:jshpshillong1993@gmail.com">
+                <div class="contact-icon" aria-hidden="true">✉️</div>
+              </a>
+              <div class="contact-details">
+                <h4>Email</h4>
+                <label>
+                  <a href="mailto:jshpshillong1993@gmail.com">
+                    jshpshillong1993@gmail.com
+                  </a>
+                </label>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <a
+                href="https://youtube.com/@jingiasengsamlahynniewpres1715?si=mLsbA8NOeqDwGKVp"
+              >
+                <div class="contact-icon" aria-hidden="true">📺</div>
+              </a>
+              <div class="contact-details">
+                <h4>
+                  <a
+                    href="https://youtube.com/@jingiasengsamlahynniewpres1715?si=mLsbA8NOeqDwGKVp"
+                  >
+                    YouTube Channel
+                  </a>
+                </h4>
+                <label>
+                  <a
+                    href="https://youtube.com/@jingiasengsamlahynniewpres1715?si=mLsbA8NOeqDwGKVp"
+                  >
+                    Jingiaseng Samla Hynniew Presbytery JSHP - official
+                  </a>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form">
+            <h5>Send us a Message</h5>
+
+            <form id="contactForm" novalidate>
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  autocomplete="name"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Your Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  autocomplete="email"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input id="subject" name="subject" type="text" required />
+              </div>
+
+              <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  class="form-control"
+                  rows="5"
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn">Send Message</button>
+              <div id="status" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- EmailJS CDN -->
+      <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+      <script src="https://jshp.online/js_store/contact_form_email.js"></script>
+      <!--Java Script for Navbar -->
+      <script src="https://jshp.online/js_store/MenuToggle.js"></script>
+      <script src="video_load.js"></script>
+    </main>
+    <footer class="modern-footer">
+      <div id="footer_section">Footer</div>
+      <script src="https://jshp.online/js_store/footer_script.js"></script>
+    </footer>
+  </body>
+</html>
